@@ -1,0 +1,40 @@
+{% extends "base.html" %} 
+{% load static %} 
+
+{% block title %} About us {% endblock title %} 
+
+{% block page-data %}
+<div class="container-fluid aboutus-container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-12 text-center p-3 text-primary fs-2">ABOUT US</div>
+        <hr>
+        <div class="col-lg-7 col-sm-9 my-2" >
+            <img src="{% static 'images/tiffin.jpg' %}" alt="tiffin image" style="height: 100%; width: 100%;">
+        </div>
+        <div class="col-lg-7 col-sm-9 mt-3 p-2">
+            <p>
+                Welcome to Mess'er, your go-to platform for students and travelers seeking a homely meal away from home. At Mess'er, we understand the importance of finding a regular eating place that not only serves delicious meals but also offers the comfort and warmth of a home-cooked feast.
+            </p>
+            <p>
+                Our platform bridges the gap between students, travelers, and mess owners, providing a seamless experience for everyone involved. For students relocating to new towns for studies or travelers exploring new destinations, finding a reliable eating place can be a challenge. That's where Mess'er steps in.
+            </p>
+
+            <p>
+                <b>For Mess Owners:</b><br>
+                Mess'er provides a platform for mess owners to showcase their offerings to a wider audience. By registering your mess on our website, you gain visibility among students and travelers seeking a regular place to eat. Showcase your daily menus, location, and amenities, making it easier for potential customers to find you. Additionally, our platform offers tools for recording attendance and managing monthly packages, streamlining your operations and ensuring a hassle-free experience.
+            </p>
+            <p>
+                <b>For Students and Travelers:</b><br>
+                Discovering a reliable eating place in an unfamiliar town can be daunting. With Mess'er, finding your go-to spot is as easy as a few clicks. Browse through a curated list of messes, each offering today's menu and location details. With the integrated Google Maps feature, getting directions to your chosen mess is a breeze. Plus, with our convenient monthly packages, you can enjoy delicious meals worry-free, knowing that your dining needs are taken care of.
+            </p>
+
+            <p>
+                At Mess'er, we're passionate about connecting people through food. Whether you're a student embarking on a new academic journey or a traveler exploring new horizons, let Mess'er be your companion in discovering delicious meals and forging meaningful connections.
+            </p>
+
+                Join the Mess'er community today and embark on a culinary adventure like no other!
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock page-data %}

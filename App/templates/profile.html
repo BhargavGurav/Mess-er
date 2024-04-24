@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% block title %} Profile {% endblock title %}
+
+{% block page-data %}
+<div class="container profile-container">
+    <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-lg-6 col-md-8 col-10 p-3">
+            <div class="info-div">
+                <table class="table  table-hover table-boredered">
+                    <div class="d-grid mb-3"><button class="btn btn-outline-dark fs-4" style="cursor:alias;">Personal Details</button></div>
+                    <tr>
+                        <td><b>Name</b></td>
+                        <td>{{ user.first_name }} {{ user.last_name }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Email-ID</b></td>
+                        <td>{{ user.email }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Mobile no.</b></td>
+                        <td>{{ owner.contact }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Mess name</b></td>
+                        <td>{{ owner.mess }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>State</b></td>
+                        <td>{{ owner.state }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>District</b></td>
+                        <td>{{ owner.district }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Address</b></td>
+                        <td>{{ owner.address }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <a href="#" class="btn btn-outline-danger float-end ms-3" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a>
+                            <a href="#" class="btn btn-outline-success float-end" data-bs-toggle="modal" data-bs-target="#updateMenu">Update Menu</a>
+                            <a href="/customers/{{user.id}}" class="btn btn-info">Customers</a>
+                        </td>
+                    </tr>
+                    
+                </table>
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
+
+<div class="modal" id="logoutModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fas fa-sign-out fs-3"></i>&nbsp;<h1>Sign-out</h1>
+                <button class="btn btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body text-center">
+                <p class="h2 text-bold">Sure want to Sign-out?</p>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-danger btn-lg rounded-pill" href="{% url 'logoutUser' %}">Yes</a>
+                <button class="btn btn-secondary btn-lg rounded-pill" data-bs-dismiss="modal">No</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--************************* update menu model  *****************************-->
+<div class="modal" id="updateMenu">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Update Today's menu </h4>
+                <button class="btn btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form action="" method="post" class="was-validated">{% csrf_token %}
+                    <div class="form-group mt-2">
+                        <label for="">Item 1</label>
+                        <input type="text" class="form-control" name="item1" required value="{{ menu.item1 }}">
+                    </div>
+                    <div class="form-group mt-2">
+                        <label for="">Item 2</label>
+                        <input type="text" class="form-control" name="item2" required value="{{ menu.item2 }}">
+                    </div>
+                    <div class="form-group mt-2">
+                        <label for="">Item 3</label>
+                        <input type="text" class="form-control" name="item3" required value="{{ menu.item3 }}">
+                    </div>
+                    <div class="form-group mt-2">
+                        <label for="">Item 4</label>
+                        <input type="text" class="form-control" name="item4" value="{{ menu.item4 }}">
+                    </div>
+                    <div class="form-group mt-2">
+                        <label for="">Item 5</label>
+                        <input type="text" class="form-control" name="item5" value="{{ menu.item5 }}">
+                    </div>
+                    <div class="form-group mt-2">
+                        <label for="">Item 6</label>
+                        <input type="text" class="form-control" name="item6" value="{{ menu.item6 }}">
+                    </div>
+                    <div class="form-group mt-2">
+                        <label for="">Item 7</label>
+                        <input type="text" class="form-control" name="item7" value="{{ menu.item7 }}">
+                    </div>
+                    <div class="form-group mt-2">
+                        <label for="">Item 8</label>
+                        <input type="text" class="form-control" name="item8" value="{{ menu.item8 }}">
+                    </div>
+                    <div class="form-group mt-2">
+                        <label for="">Item 9</label>
+                        <input type="text" class="form-control" name="item9" value="{{ menu.item9 }}">
+                    </div>
+                    <div class="form-group mt-2">
+                        <label for="">Item 10</label>
+                        <input type="text" class="form-control" name="item10" value="{{ menu.item10 }}">
+                    </div>
+
+                    <div class="d-grid mt-3">
+                        <button class="btn btn-outline-primary" type="submit">Update</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

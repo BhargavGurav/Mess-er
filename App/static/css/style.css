@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital@1&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    /* list-style: none; */
+    text-decoration: none;
+    font-family: 'Roboto Mono', monospace;
+}
+body{
+    background-color: whitesmoke;
+    /* height: 100vh; */
+    /* overflow: hidden; */
+}
+.collapse{
+    text-align: center;
+}
+@media (max-width: 750px){
+    .register{
+        margin-bottom: 15px;
+    }
+}
+/* header{
+    padding: 5px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    top: 0;
+    left: 0;
+    background-color: rgba(171, 214, 239, 0.5);
+}
+.nav-icon{
+    font-size: 1.5rem;
+    margin-left: 15px;
+    font-weight: 800;
+}
+.nav-icon i{
+    color: black;
+}
+.cnavbar{
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+
+}
+.cnavbar a{
+    font-size: 1.5rem;
+    margin-right: 20px;
+    text-decoration: none;
+    color: black;
+    transition: all .50s ease;
+}
+header .last-nav-sec{
+    display: flex;
+    align-items: center;
+
+}
+header .last-nav-sec .register, header .last-nav-sec .login{
+    font-size: 1.5rem;
+    margin-right: 5px;
+    text-decoration: none;
+    color: black;
+}
+header .last-nav-sec .menu-icon{
+    color: black;   
+    cursor: pointer;
+    margin-right: 15px;
+    display: none;
+}
+.cnavbar a:hover{
+    color: red;
+} */
+footer span{
+    font-size: 1.3rem;
+}
+
+/* @media (max-width : 1200px){
+    header{
+        padding: 2px;
+    }
+    .nav-icon{
+        margin-left: 3px;
+        font-size: 1.3rem;
+    }
+    .cnavbar a, header .last-nav-sec .register, header .last-nav-sec .login{
+        font-size: 1.3rem;
+    }
+
+}
+@media (max-width : 700px){
+    header{
+        padding: 5px;
+    }
+    .cnavbar{
+        position: absolute;
+        z-index: 1100;
+        top: 100%;
+        width: 35%;
+        right: -100%;
+        background-color: black;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        height: 23vh;
+        border-radius: 7px;
+    }
+    .cnavbar a{
+        color: white;
+        margin-top: 20px;
+        font-size: 1.2rem;
+        transition: all .50s ease;
+    }
+    .cnavbar a:hover{
+        columns: red;
+    }
+    header .last-nav-sec .menu-icon{
+        display: block;
+    }
+    .cnavbar.openhiddennav{
+        right: 2%;
+    }
+    footer span{
+        font-size: 1.1rem;
+    }
+
+} */
+
+/*********************** Home start ***********************/
+.home-container{
+    position: relative;
+    height: 92.2vh;
+    width: 100%;
+    left: 0;
+    background-image: url('../images/img2.jpg');
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.home-container::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.683);
+
+}
+.home-container .home-row{
+    position: relative;
+    height: 100%;
+
+}
+
+/*********************** Home end ***********************/
+
+/*********************** Mess start ***********************/
+#mess{
+    min-height: 85.7vh;
+}
+.mess-container{
+    background: whitesmoke;
+}
+.mess-box{
+    border: 2px;
+    padding: 7px 15px;
+    border-radius: 7px;
+    box-shadow: 0 8px 16px 0 rgba(15, 15, 15, 0.212);
+}
+.no-detail-box{
+    padding: 50px;
+    border: 2px solid red;
+    border-radius: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* text-align: center; */
+}
+/* .mess-box ul{
+    list-style: disc !important;
+} */
+/* .mess-container{
+    height: 85.7vh;
+}
+.profile-container .row{
+    height: 100%;
+} */
+
+/*********************** Mess end ***********************/
+
+/*********************** Profile start ***********************/
+.profile-container{
+    height: 85.7vh;
+}
+.profile-container .row{
+    height: 100%;
+}
+
+/*********************** Profile end ***********************/
+
+
+/*********************** Customer start ***********************/
+#customer-box{
+    min-height: 85.8vh;
+}
+#customer-table{
+    overflow-x: scroll;
+}
+#Contact{
+    background-image: linear-gradient(35deg, rgb(55, 214, 177), rgb(210, 201, 33));
+}
+
+#Contact .address, .form-contact{
+    border: 1px solid white;
+    border-radius: 15px;
+    background-color: transparent;
+    background-color: rgba(232, 228, 228, 0.434);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 8px 16px 0 gray;
+    height: 100%;
+}
+#Contact i{
+    font-size: 25px;
+
+}
+#Contact i:hover{
+    color:rgb(7, 85, 145)
+}
+/*********************** Customer end ***********************/
+
+
+/*********************** About us start ***********************/
+.aboutus-container{
+    /* height: 85.7vh; */
+    height: auto;
+    background-color: whitesmoke;
+}
+.aboutus-container img{
+    border: 1px solid white;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px 0 gray;
+}
+.aboutus-container p{
+    text-align: justify;
+}
+
+/*********************** About us end ***********************/

@@ -1,0 +1,161 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Home {% endblock %}
+{% block page-data %}
+<div class="container-fluid home-container">
+    <div class="row home-row">
+        <div class="col-lg-12 d-flex justify-content-center align-items-center">
+            <div class="message-box text-light text-center">
+                <h2 data-aos="fade-up" data-aos-delay="500" data-aos-duration="1000" data-aos-ease="ease-in-sine">Welcome to Mess'er</h2>
+                <p class="fs-3" data-aos="fade-up" data-aos-delay="1500" data-aos-duration="1000" data-aos-ease="ease-in-sine">Let us help you find your destined place for today's meal</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section id="mess" class="py-3">
+    <div class="container text-center py-5 mess-heading">
+        <h1 class="text-bold">Mess</h1>
+        <!-- <span class="float-end">{{ip}} {{ city }}</span> -->
+        <hr>
+    </div>
+    <div class="container mess-container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-8 col-md-10 ">
+                {% if owner_detail|length == 0 %}
+                <div class="no-detail-box">
+                    <h2 class="text-danger"><i class="fas fa-circle-xmark"></i><span class="ms-3"> No mess menu details available now !</span></h2>
+                </div>
+                {% else %}
+                {% for i in owner_detail %}
+              
+                <div class="m-3 mess-box" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="300">
+                    <a class="text-bold" style='color: #472107; font-size: 1.2rem;' href="/requestedProfile/{{i.0.id }}">{{ i.0.mess }}</a>
+                    <!-- <h5>{{ i.1.address }}</h5> -->
+
+                    <hr>
+                    {% if i.1.item1 != "" %}
+                    <h6 style='color: #168187;'>Today's menu :- </h6>
+
+                    <ul style="list-style: circle !important; ">
+                        <div class="container">
+                            <div class="row d-flex justify-content-between">
+                                <div class="col-lg-3">
+                                    <li>{{ i.1.item1 }}</li>
+                                    <li>{{ i.1.item2 }}</li>
+                                    <li>{{ i.1.item3 }}</li>
+                                    {% if i.1.item4 %}
+                                    <li>{{ i.1.item4 }}</li>
+                                    {% endif %}
+                                </div>
+                                <div class="col-lg-3">
+                                    {% if i.1.item5 %}
+                                    <li>{{ i.1.item5 }}</li>
+                                    {% endif %}
+                                    {% if i.1.item6 %}
+                                    <li>{{ i.1.item6 }}</li>
+                                    {% endif %}
+                                    {% if i.1.item7 %}
+                                    <li>{{ i.1.item7 }}</li>
+                                    {% endif %}
+                                    {% if i.1.item8 %}
+                                    <li>{{ i.1.item8 }}</li>
+                                    {% endif %}
+                                </div>
+                                <div class="col-lg-3">
+                                    {% if i.1.item9 %}
+                                    <li>{{ i.1.item9 }}</li>
+                                    {% endif %}
+                                    {% if i.1.item10 %}
+                                    <li>{{ i.1.item10 }}</li>
+                                    {% endif %}
+                                   
+                                </div>
+                            </div>
+                        </div>
+                       
+
+                       
+                        
+                    </ul>
+                    {% else %}
+                       <h3 class="text-danger text-center m-2">Menu not updated yet</h3>
+                    {% endif %}
+                    <div class="d-grid gap-2">
+                        <a class="btn btn-dark" href="https://maps.google.com/maps?daddr={{i.0.address}}">Locate</a>
+                        <a class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#CustomerRegister{{i.0.id}}">Register</a>
+                    </div>
+                </div>
+
+                <div class="modal" id="CustomerRegister{{i.0.id}}">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4>Registeration Form</h4>
+                                <button class="btn btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="/registerCustomer/" method="post" class="was-validated">
+                                    {% csrf_token %}
+                                    <div class="form-group mt-3">
+                                        <label for="">Full name</label>
+                                        <input type="text" class="form-control" name="fullname" required>
+                                    </div>
+                                    <div class="form-group mt-3">
+                                        <label for="">Mess Name</label>
+                                        <input type="text" name="mess-name" class="form-control"  value="{{i.0}}" readonly>
+                                    </div>
+                                    <div class="form-group mt-3">
+                                        <label for="">Contact no. </label>
+                                        <input type="text" name="mobile" class="form-control" required>
+                                    </div>
+                                    <div class="form-group mt-3">
+                                        <label for="">E-Mail ID </label>
+                                        <input type="email" name="email" class="form-control" required>
+                                    </div>
+                                    <div class="form-group mt-3">
+                                        <label for="">Type</label>
+                                        <select name="type" id="" class="form-control">
+                                            <option >---Select one----</option>
+                                            <option value="veg">Veg (Rs. 2500/month) </option>
+                                            <option value="non-veg">Non-veg (Rs. 3000/month)</option>
+                                        </select>
+                                    </div>
+                                    <hr>
+                                    <div class="d-grid mt-2">
+                                        <button class="btn btn-outline-success" type="submit">Submit</button>
+                                    </div>
+
+                                </form>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                {% endfor %}
+                {% endif %}
+                <!-- <p>{{owner_detail}}</p> -->
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% for message in messages %}
+    {% if message.tags == 'success' %}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+        <script>
+            let m = '{{message}}';
+            swal('', m, 'success');
+        </script>
+    {% else  %}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+        <script>
+            let n = '{{message}}';
+            swal('', n, 'error');
+        </script>
+    {% endif %}
+{% endfor %}
+{% endblock %}

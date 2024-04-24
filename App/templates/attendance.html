@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% block title %} Attedance {% endblock title %} 
+
+{% block page-data %}
+<div class="container-fluid my-5">
+    <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-lg-6 col-md-7 col-sm-8 col-9">
+            <!-- <div class="col-12">Attendance</div> -->
+            <div class="attendance-box">
+                <div class="col-12 my-2 text-center">
+                    <h4>Attendance of {{ customer }}</h4>
+                </div>
+                <table class="table table-bordered table-hover text-center">
+                    <tr rowspan="2">
+                        <td>Date</td>
+                        <td colspan="2">Attendance</td>
+                        <td>Action</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Morning</td>
+                        <td>Evening</td>
+                        <td></td>
+                    </tr>
+                {% for i in dates %}
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <tr>
+                        <td><input type="text" value="{{ i }}" name="date" style="display: none;">{{i}}</td>
+                        <td> <input type="checkbox" name="lunch" id=""> </td>
+                        <td><input type="checkbox" name="dinner" id=""> </td>
+                        <td><button type="submit" class="btn btn-outline-success" {% if not isSame %} disabled title="You have to login first" {% endif %} >Save</button></td>
+                    </tr>
+                </form>
+                {% endfor %}
+            </table>
+
+            <div class="col-12 my-2 text-center">
+                <h4>Attended days</h4>
+            </div>
+            <table class="table table-bordered table-hover text-center">
+                <tr rowspan="2">
+                    <td>Date</td>
+                    <td colspan="2">Attendance</td>
+                    
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Morning</td>
+                    <td>Evening</td>
+                    
+                </tr>
+            {% for i in attendance %}
+            <form action="" method="post">
+                {% csrf_token %}
+                <tr>
+                    <td>{{i.date}}</td>
+                    <td> <input type="checkbox" {% if i.morning %} checked {% endif %} disabled> </td>
+                    <td><input type="checkbox"  {% if i.evening %} checked {% endif %} disabled> </td>
+                   
+                </tr>
+            </form>
+            {% endfor %}
+            </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% for message in messages %}
+    {% if message.tags == 'success' %}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+        <script>
+            let m = '{{message}}';
+            swal('', m, 'success');
+        </script>
+    {% else  %}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+        <script>
+            let n = '{{message}}';
+            swal('', n, 'error');
+        </script>
+    {% endif %}
+{% endfor %}
+
+{% endblock page-data %}

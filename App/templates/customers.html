@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %} Customers {% endblock %}
+{% block page-data %}
+<div class="container-fluid" id="customer-box">
+    <div class="row d-flex justify-content-center p-5">
+        <div class="col-lg-10" id="customer-table">
+            {% if data|length >= 1 %}
+
+            <table class="table table-bordered" id='customer'>
+                <thead class="fw-bold">
+                    <tr>
+                        <td>Name</td>
+                        <td>Contact</td>
+                        <td>Email</td>
+                        <td>Type</td>
+                        <td>Registration Date</td>
+                        <td>Per month</td>
+                    </tr>
+                </thead>
+
+                
+                <tbody>
+
+                    {% for i in data %}
+                    <tr>
+                        <td><a  href="/attendance/{{i.id}}" style="text-decoration: none;">{{ i.full_name }}</a>
+                        <!-- <a  href="/requestedCustomer/{{i.id}}" style="text-decoration: none;">{{ i.full_name }}</a> {{ user. }}</td> -->
+                        <td>{{ i.contact }}</td>
+                        <td>{{ i.email }}</td>
+                        <td>{{ i.type }}</td>
+                        <td>{{ i.registration }}</td>
+                        <td>{{ i.per_month }}</td>
+
+                       
+                    </tr>
+                    {% endfor %}
+                
+                </tbody>
+                
+            </table>
+            {% else %}
+
+                    <div class="d-flex justify-content-center align-items-center">
+                        <h2 class="text-danger">No registered customers yet.</h2>
+                    </div>
+                    
+                {% endif %}
+                
+        </div>
+        
+    </div>
+</div>
+{% endblock %}
